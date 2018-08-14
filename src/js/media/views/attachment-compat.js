@@ -78,7 +78,11 @@ AttachmentCompat = View.extend(/** @lends wp.media.view.AttachmentCompat.prototy
 	},
 
 	postSave: function() {
-		this.controller.trigger( 'attachment:compat:ready', ['ready'] );
+    var self = this;
+		this.controller.trigger( 'attachment:compat:ready', ['complete'] );
+    setTimeout( function() {
+		  self.controller.trigger( 'attachment:compat:ready', ['ready'] );
+    }, 2000  );
 	}
 });
 

@@ -66,7 +66,8 @@ Attachment = View.extend(/** @lends wp.media.view.Attachment.prototype */{
 			this.details( this.model, this.controller.state().get('selection') );
 		}
 
-		this.listenTo( this.controller, 'attachment:compat:waiting attachment:compat:ready', this.updateSave );
+    this.controller.on('attachment:compat:waiting', this.updateSave, this);
+    this.controller.on('attachment:compat:ready', this.updateSave, this);
 	},
 	/**
 	 * @returns {wp.media.view.Attachment} Returns itself to allow chaining
